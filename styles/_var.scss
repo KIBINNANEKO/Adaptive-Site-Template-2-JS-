@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+$MainFont: "Open Sans";
+
+$Blue: #69B9FF;
+$Grey: #192024;
+$TextColor: #676770;
+
+$maxWidth: 1920;
+$maxWidthContainer: 1200;
+
+.flex_button{
+	display: flex;
+}
+
+.menu-btn {
+	display: none;
+	width: 33px;
+	height: 40px;
+	position: relative;
+	top: -5px;
+	z-index: 25;
+	overflow: visible;
+	cursor: pointer;
+
+	span {
+		width: 40px;
+		height: 2px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background-color: $TextColor;
+		transition: all 0.5s;
+	}
+
+	&.active span:nth-of-type(1) {
+		display: none;
+	}
+
+	&.active span:nth-of-type(2){
+		top: 50%;
+		transform: translate(-50%, 0%) rotate(45deg);
+	}
+
+	&.active span:nth-of-type(3) {
+		top: 50%;
+		transform: translate(-50%, 0%) rotate(-45deg);
+	}
+
+	& span:nth-of-type(1) {
+		top: calc(50% + 5px);
+	}
+
+	& span:nth-of-type(2) {
+		top: calc(50% - 5px);
+	}
+
+	&:nth-of-type(3) {
+		top: calc(50%);
+	}
+
+
+}	
+
+@media (max-width: 767.98px){
+		.navigation{
+			display: none;
+		}
+
+		.menu-btn{
+			display: block;
+		}
+
+		.logo{
+			position: relative;
+			bottom: 8px;
+		}
+	}
+
+
+.menu {
+	z-index: 1;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding: 15px;
+	background: #ffffff;
+	transform: translateX(-100%);
+	transition: transform 0.5s;
+
+	&.active {
+		transform: translateX(0);
+	}
+
+	ul{
+		margin: 40% 0;
+	}
+
+	li {
+		margin-bottom: 90px;
+		text-align: center;
+		display: block;
+		list-style-type: none;
+
+		a{
+			color: $TextColor;
+			font-size: 45px;
+
+			&:hover{
+				color: $Blue;
+			}
+		}
+	}
+}
+
+.arrow{
+	width: 70px;
+	height: 70px;
+	position:fixed;
+	border-radius: 50%;
+	right: -100px;
+	bottom: 20px;
+	visibility: hidden;
+	transition: 0.5s;
+	cursor: pointer;
+	&:hover{
+		transform: rotate(360deg);
+	}
+}
+
+.showA{
+	right: 30px;
+	visibility: visible;
+}
+
+
+.animate{
+	color: #000;
+}
+
+.modal_abs{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color:rgba(0, 0, 0, 0.5);
+	z-index: 9;
+}
+
+.modal{
+	position: fixed;
+	z-index: 10;
+	border-radius: 10px;
+	border: 1px black solid;
+	@include adaptiv-value("width", 600, 340, 0);
+	@include adaptiv-value("height", 400, 470, 1);
+	display: flex;
+	flex-direction: column;
+	background-color: rgb(255, 255, 255);
+	overflow-y: auto;
+	@include adaptiv-value("top", 180, 120, 0);
+	@include adaptiv-value("left", 670, 18, 0);
+	justify-content: center;
+	align-items:center;
+	*{
+		@include adaptiv-value("margin-bottom", 30, 18, 0);
+	}
+	
+	button:first-child{
+		position: absolute;
+		right: 20px;
+		top: 20px;
+		width: 100px;
+		height: 30px;
+		border-radius: 10px;
+		color: white;
+		background-color: $Blue;
+		&:hover{
+			background-color: #4c9ade;
+		}
+	}
+
+	input[placeholder]{
+		text-align: center;
+		letter-spacing: 5px;
+		opacity: 0.3;
+		font-size: 15px;
+	}
+
+	.inp{
+		border-radius: 4px;
+		@include adaptiv-value("width", 400, 250, 0);
+		height: 40px;
+		@include adaptiv-value("font-size", 25, 16, 0);
+		background-color: rgb(238, 238, 238);
+		-webkit-box-shadow: 4px 4px 8px 6px rgba(0, 0, 0, 0.2);
+		-moz-box-shadow: 4px 4px 8px 6px rgba(0, 0, 0, 0.2);
+		box-shadow: 4px 4px 8px 6px rgba(0, 0, 0, 0.2);
+
+		&:focus{
+			border: black 2px solid;
+		}
+
+	}
+
+	.border{
+		border:$TextColor solid 1px;
+	}
+
+	.password{
+		-webkit-text-security: disc;
+	}
+
+	.uncorrectly_password{
+		border: red 2px solid;
+	}
+
+	.see_password{
+		-webkit-text-security: none;
+	}
+
+	.block_pass{
+		position: relative;
+	}
+
+	.check{
+		position: absolute;
+		top: 13px;
+		right: -25px;
+	}
+
+	h4{
+		@include adaptiv-value("font-size", 35, 25, 0);
+		color: $TextColor;
+		letter-spacing: 10px;
+		margin-bottom: 10px;
+	}
+
+	p{
+		@include adaptiv-value("font-size", 14, 12, 0);
+		color: $TextColor;
+		opacity: 0.4;
+		max-width: 400px;
+		text-align: center;
+		text-transform: lowercase;
+		margin-top: 10px;
+	}
+
+	button:last-child{
+		text-transform: uppercase;
+		width: 150px;
+		height: 35px;
+		border-radius: 10px;
+		color: white;
+		background-color: $Blue;
+		letter-spacing: 3px;
+		margin-bottom: 0px;
+		&:hover{
+			background-color: #4c9ade;
+		}
+	}
+}
+
+
+
+.hide{
+	visibility: hidden;
+}
+
+.show{
+	visibility: visible;
+}
+
